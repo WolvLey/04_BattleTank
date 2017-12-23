@@ -9,9 +9,9 @@
 class UTankTrack;
 
 /**
- * Responsible from driving the tank tracks
+ * Responsible for driving the tank tracks
  */
-UCLASS(Classgroup= (Custom), meta = (BlueprintSpawnableComponent) )
+UCLASS(Classgroup = (Custom), meta = (BlueprintSpawnableComponent))
 class BATTLETANK_API UTankMovementComponent : public UNavMovementComponent
 {
 	GENERATED_BODY()
@@ -22,6 +22,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = Input)
 		void IntendMoveForward(float Throw);
+
+	UFUNCTION(BlueprintCallable, Category = Input)
+		void IntendTurnRight(float Throw);
+
 private:
 	UTankTrack* LeftTrack = nullptr;
 	UTankTrack* RightTrack = nullptr;
