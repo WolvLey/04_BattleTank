@@ -8,9 +8,8 @@
 
 // Forward declarations
 class UTankBarrel;
-class UTankAimingComponent;
-class UTankMovementComponent;
 class AProjectile;
+
 UCLASS()
 class BATTLETANK_API ATank : public APawn
 {
@@ -22,26 +21,16 @@ public:
 
 	virtual void BeginPlay() override;
 
-	void AimAt(FVector HitLocation);
-
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 		void Fire();
-
-protected:
-
-	UPROPERTY(BlueprintReadOnly)
-		UTankAimingComponent* TankAimingComponent = nullptr;
-
-	UPROPERTY(BlueprintReadOnly)
-		UTankMovementComponent* TankMovementComponent = nullptr;
 
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 		TSubclassOf<AProjectile> ProjectileBlueprint;
 
-	// TODO remoive once firing is moved to aiming component
+	// TODO remvoe once firing is moved to aiming component
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-		float LaunchSpeed = 4000; // TODO find sensible default
+		float LaunchSpeed = 4000;
 
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 		float ReloadTimeInSeconds = 3;

@@ -38,9 +38,8 @@ void UTankAimingComponent::TickComponent(float DeltaTime, ELevelTick TickType, F
 	// ...
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation)
 {
-
 	if (!ensure(Barrel)) { return; }
 
 	FVector OutLaunchVelocity;
@@ -56,7 +55,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		0,
 		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
-
 	);
 
 	if (bHaveAimSolution)

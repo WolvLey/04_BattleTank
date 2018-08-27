@@ -27,12 +27,11 @@ class BATTLETANK_API UTankAimingComponent : public UActorComponent
 public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-	
+
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 		void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
-	// TODO add SetTurretDifference
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation);
 
 protected:
 	// Called when the game starts
@@ -47,6 +46,8 @@ private:
 	UTankBarrel * Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+		float LaunchSpeed = 4000;
 
 	void MoveBarrelTowards(FVector AimDirection);
 };
